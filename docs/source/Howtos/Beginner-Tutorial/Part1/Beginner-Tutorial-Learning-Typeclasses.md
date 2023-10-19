@@ -301,9 +301,11 @@ Let's try to modify ourselves a little. Open up `mygame/typeclasses/characters.p
 """
 (module docstring)
 """
-from evennia import DefaultCharacter
+from evennia.objects.objects import DefaultCharacter
 
-class Character(DefaultCharacter):
+from .objects import ObjectParent
+
+class Character(ObjectParent, DefaultCharacter):
     """
     (class docstring)
     """
@@ -351,11 +353,11 @@ Look at the **Typeclass** field and you'll find that it points to `typeclasses.c
 
 ### A method on ourselves
 
-Let's try something simple first. Back in `mygame/typeclasses/characters.py`:
+Let's try something simple first. Back in `mygame/typeclasses/characters.py`, replace `pass` with the below variables and new `get_stats()` method so it looks like this:
 
 ```python
 
-class Character(DefaultCharacter):
+class Character(ObjectParent, DefaultCharacter):
     """
     (class docstring)
     """
